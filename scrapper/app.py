@@ -1,8 +1,8 @@
 from flask import Flask , request
 from flask_restful import  Api, Resource
 import pandas as pd
-from helpers import NovelParser , NovelHelper
-from xlsx_actions import  XLSXData
+from .helpers import NovelParser , NovelHelper
+from .xlsx_actions import  XLSXData
 app = Flask(__name__)
 api = Api(app)
 

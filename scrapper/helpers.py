@@ -1,5 +1,5 @@
 from flask_restful import reqparse , abort
-from xlsx_actions import XLSXData
+from .xlsx_actions import XLSXData
 class NovelParser():
     """
     define different parser for different http methods 
