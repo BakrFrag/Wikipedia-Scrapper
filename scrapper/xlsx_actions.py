@@ -16,7 +16,8 @@ class XLSXData(object):
         """
         read/reread xlsx data as pandas data frame
         """
-        try:    cwd = os.getcwd()
+        try:    
+                cwd = os.getcwd()
                 xlsx_data =pd.read_excel(os.path.join(cwd,XLSXData.workbook_name),XLSXData.sheet_name)
                 if list(xlsx_data.columns) != XLSXData.headers:
                     abort(400,message=f"xlsx sheet headers don't match {XLSXData.headers} raw headers f{list(xlsx_data.columns)}")
@@ -33,7 +34,8 @@ class XLSXData(object):
         write/rewrite data pandas data frame to excel sheets
         rewrite excel sheet after add new one or edit existing one or delete one
         """
-        try:    cwd = os.getcwd()
+        try:     
+                cwd = os.getcwd()
                 df = pd.DataFrame(data_frame)
                 df.to_excel(os.path.join(cwd,XLSXData.workbook_name),XLSXData.sheet_name,index=False,header=True,index_label="Index")
         except Exception as E:
