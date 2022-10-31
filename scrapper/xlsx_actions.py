@@ -9,7 +9,7 @@ class XLSXData(object):
 
 
     sheet_name: str = "Novels"
-    workbook_name: str = "output.xlsx"
+    workbook_name: str = "WikiScrapping.xlsx"
     headers: list[str] = ['الروايه', 'عنوان الروايه', 'الكاتب', 'عنوان الكاتب', 'البلد', 'الترتيب']
     @staticmethod 
     def read_xlsx_novels_data():
