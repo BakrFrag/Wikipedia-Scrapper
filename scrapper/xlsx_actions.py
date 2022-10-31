@@ -1,6 +1,6 @@
 import pandas as pd 
 from flask_restful import abort
-
+import os
 class XLSXData(object):
     """
     handle read excel as dataframe 
@@ -16,8 +16,8 @@ class XLSXData(object):
         """
         read/reread xlsx data as pandas data frame
         """
-        try:
-                xlsx_data =pd.read_excel(XLSXData.workbook_name,XLSXData.sheet_name)
+        try:    cwd = os.getcwd()
+                xlsx_data =pd.read_excel(os.path.join(cwd,XLSXData.workbook_name),XLSXData.sheet_name)
                 if list(xlsx_data.columns) != XLSXData.headers:
                     abort(400,message=f"xlsx sheet headers don't match {XLSXData.headers} raw headers f{list(xlsx_data.columns)}")
                 return xlsx_data
@@ -33,9 +33,9 @@ class XLSXData(object):
         write/rewrite data pandas data frame to excel sheets
         rewrite excel sheet after add new one or edit existing one or delete one
         """
-        try:
+        try:    cwd = os.getcwd()
                 df = pd.DataFrame(data_frame)
-                df.to_excel(XLSXData.workbook_name,XLSXData.sheet_name,index=False,header=True,index_label="Index")
+                df.to_excel(os.path.join(cwd,XLSXData.workbook_name),XLSXData.sheet_name,index=False,header=True,index_label="Index")
         except Exception as E:
                 return {
                     "message":f"thanks to ensure that requirements libraries already installerd and workbook {XLSXData.workbook_name} closed"
